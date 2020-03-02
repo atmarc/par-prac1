@@ -28,8 +28,8 @@ void init_complex_grid(fftwf_complex in_fftw[][N][N]) {
   int k,j,i;
 
   for (k = 0; k < N; k++) {
-    for (j = 0; j < N; j++) {
       tareador_start_task("grid_bro");
+    for (j = 0; j < N; j++) {
       for (i = 0; i < N; i++)
       {
         in_fftw[k][j][i][0] = (float) (sin(M_PI*((float)i)/64.0)+sin(M_PI*((float)i)/32.0)+sin(M_PI*((float)i/16.0)));
@@ -39,8 +39,8 @@ void init_complex_grid(fftwf_complex in_fftw[][N][N]) {
         out_fftw[k][j][i][1]= in_fftw[k][j][i][1];
 #endif
       }
-      tareador_end_task("grid_bro");
     }
+      tareador_end_task("grid_bro");
   }
 }
 
@@ -64,15 +64,15 @@ void transpose_zx_planes(fftwf_complex in_fftw[][N][N], fftwf_complex tmp_fftw[]
     int k, j, i;
 
     for (k=0; k<N; k++) {
-     for (j=0; j<N; j++) {
        tareador_start_task("transpose_zx_planes");
+     for (j=0; j<N; j++) {
        for (i=0; i<N; i++)
        {
          in_fftw[i][j][k][0] = tmp_fftw[k][j][i][0];
          in_fftw[i][j][k][1] = tmp_fftw[k][j][i][1];
        }
-       tareador_end_task("transpose_zx_planes");
      }
+       tareador_end_task("transpose_zx_planes");
     }
 }
 

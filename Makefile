@@ -11,7 +11,7 @@ OPT3    = -g -O3
 CINCL   = -I. -I${FFTW3_HOME}/include
 CLIBS   = -L. ${FFTW3_HOME}/lib/libfftw3f.a -lm
 
-TARGETS  = 3dfft_seq 3dfft_omp 3dfft_tar_v5
+TARGETS  = 3dfft_seq 3dfft_omp 3dfft_tar_v4
 all: $(TARGETS) 
 
 3dfft_seq:	3dfft_seq.c const.h
@@ -20,7 +20,7 @@ all: $(TARGETS)
 3dfft_omp:	3dfft_omp.c const.h
 	$(CC) $(CFLAGS) $(OPT3) $(OPENMP) $(CINCL) $< -o $@ $(CLIBS) 
 
-3dfft_tar_v5:	3dfft_tar_v5.c const.h
+3dfft_tar_v4:	3dfft_tar_v4.c const.h
 	$(TAREADORCC) -DTEST $(CFLAGS) $(OPTG0) $(CINCL) $< -o $@ $(CLIBS) $(TAREADOR_FLAGS)
 
 clean:
